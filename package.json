@@ -22,10 +22,15 @@
     "javascript"
   ],
   "dependencies": {
+    "axios": "^0.13.1",
     "cheerio": "^0.20.0",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
+    "http": "0.0.0",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
+    "request": "^2.74.0",
+    "requestify": "^0.2.0",
     "superagent": "^2.2.0"
   },
   "devDependencies": {
