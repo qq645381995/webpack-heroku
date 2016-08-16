@@ -3,26 +3,27 @@ const port = (process.env.PORT || 8080)
 const app = Server.app()
 
 if (process.env.NODE_ENV !== 'production') {
-  const webpack = require('webpack')
-  const webpackDevMiddleware = require('webpack-dev-middleware')
-  const webpackHotMiddleware = require('webpack-hot-middleware')
-  const config = require('./webpack.dev.config.js')
-  const compiler = webpack(config)
+    const webpack = require('webpack')
+    const webpackDevMiddleware = require('webpack-dev-middleware')
+    const webpackHotMiddleware = require('webpack-hot-middleware')
+    const config = require('./webpack.dev.config.js')
+    const compiler = webpack(config)
 
-  app.use(webpackHotMiddleware(compiler))
-  app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-  }))
+    app.use(webpackHotMiddleware(compiler))
+    app.use(webpackDevMiddleware(compiler, {
+        noInfo: true,
+        publicPath: config.output.publicPath
+    }))
 }
 var express = require('express');
 var cheerio = require('cheerio');
 var superagent = require('superagent');
-app.all('*', function(req, res, next) {
+app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1')
+    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+    // res.header("X-Powered-By",' 3.2.1')
+    res.header("Set-Cookie", 'SERVERID=ebcde74858922aec8aaf8fb40aed6036|1471326286|1471326279;Path=/')
     res.header("Content-Type", "application/json;charset=utf-8");
     next();
 });
