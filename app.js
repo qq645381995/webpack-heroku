@@ -122,13 +122,14 @@ app.get('/test', function (req, res, next) {
         var $element = $(this).find('.sicon').parent().attr('id');
 
         var id1 = $(this).find(`#${$element}`);
-        var id2 = $(this).find(`#${$element}m busc`).attr('clstag');
+        var id2 = list.find(`#${$element}m .busc`).attr('clstag');
 
-        var $element2 = $(this).find('.busc').attr('clstag');   
-        // if ($element) {
-            items.list.push({ id: $element, from: $element2, id1: id1.text(), id2: id2 });
-        // }
+        if ($element) {
+            items.list.push({ id: $element, id1: id1.text(), id2: id2 });
+        }
     })
+
+
     let data = {
         numRoad: $('.inquiry_header #lh').text()
         , numRoadDec: $('.inner #lm').text()
