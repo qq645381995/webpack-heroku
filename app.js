@@ -119,13 +119,19 @@ app.get('/test', function (req, res, next) {
         list: []
     }
     list.each(function (i, element) {
-        var $element = $(this).find('.sicon').parent().attr('id');
+        const id = $(this).find('.sicon').parent().attr('id');
+        const item = $(this).find(`#${id}`);
 
-        var id1 = $(this).find(`#${$element}`);
-        var id2 = list.find(`#${$element}m .busc`).attr('clstag');
+        const metre = list.find(`#${id}m`).find('.busc').attr('clstag');
 
-        if ($element) {
-            items.list.push({ id: $element, id1: id1.text(), id2: id2 });
+        if (id) {
+            items.list.push({
+                id: id,
+                name: item.find('span').attr('title'),
+                active: item.find('span').attr('style') ? 'active' : '',
+                isDZ: item.find('.buss').attr('clstag') == -1 ? true : false,
+                metre: metre
+            });
         }
     })
 
