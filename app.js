@@ -120,9 +120,14 @@ app.get('/test', function (req, res, next) {
     }
     list.each(function (i, element) {
         var $element = $(this).find('.sicon').parent().attr('id');
-        var $element2 = $(this).find('.busc').attr('clstag');
 
-        items.list.push({ id: $element, from: $element2 });
+        var id1 = $(this).find(`#${$element}`);
+        var id2 = $(this).find(`#${$element}m busc`).attr('clstag');
+
+        var $element2 = $(this).find('.busc').attr('clstag');   
+        // if ($element) {
+            items.list.push({ id: $element, from: $element2, id1: id1.text(), id2: id2 });
+        // }
     })
     let data = {
         numRoad: $('.inquiry_header #lh').text()
